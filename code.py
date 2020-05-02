@@ -1,26 +1,25 @@
-from PIL import Image
-img=Image.open("vit.bmp")
-
-img=img.convert("RGBA")
-
-pixdata=img.load()
-
-for y in xrange(img.size[1]):
-	for x in xrange(img.size[0]):
-		if pixdata[x,y]==(23,133,12,255):
-			pixdata[x,y]=(0,0,0,255)
-		else: pixdata[x,y]=(255,255,255,255)
-
-		
-img.save("vit-black.gif","GIF")
-
-
-#import sys
-
 # python chop.py [chop-factor] [in-file] [out-file]
 
+# import sys
+from PIL import Image
+from pytesseract import *
+
+img = Image.open("vit.bmp")
+img = img.convert("RGBA")
+pixdata = img.load()
+
+for y in range(img.size[1]):
+    for x in range(img.size[0]):
+        if pixdata[x, y] == (23, 133, 12, 255):
+            pixdata[x, y] = (0, 0, 0, 255)
+        else:
+            pixdata[x, y] = (255, 255, 255, 255)
+
+
+img.save("vit-black.gif", "GIF")
+
 chop = int(1)
-image = Image.open('vit-black.gif').convert('1')
+image = Image.open("vit-black.gif").convert("1")
 width, height = image.size
 data = image.load()
 
@@ -85,8 +84,7 @@ for x in range(width):
         # Skip this sequence we just altered.
         y += total
 
-image.save('vit-hack.gif')
+image.save("vit-hack.gif")
 
-from pytesser import *
-image=Image.open('vit-hack.gif')
-print image_to_string(image)
+image = Image.open("vit-hack.gif")
+print(image_to_string(image))
