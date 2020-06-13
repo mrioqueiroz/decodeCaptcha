@@ -18,7 +18,7 @@ for y in range(img.size[1]):
 
 img.save("vit-black.gif", "GIF")
 
-chop = int(1)
+chop = 1
 image = Image.open("vit-black.gif").convert("1")
 width, height = image.size
 data = image.load()
